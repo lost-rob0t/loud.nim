@@ -2,6 +2,47 @@
 
 Loud is a script to create network noise to hinder network analysis.
 
-
+* TODO [0/2]
+- [ ] Have script auto repeat, so user doesnt need to restart it
+- [ ] Include default list
 
 * Install
+
+#+begin_src shell
+git clone https://gitlab.com/nsaspy/loud.nim.git
+cd loud.nim && nimble install
+#+end_src
+
+
+* Usage
+
+loud needs a txt file containing a list of urls.
+
+example text file
+#+begin_src
+https://en.wikipedia.org/wiki/List_of_lists_of_lists
+https://en.wikipedia.org/wiki/Nim_(programming_language)
+https://nim-lang.org
+#+end_src
+
+
+One can set th depth to any number, but tis not recomended to go over 3. If you set 8, it will never stop.
+Basic usage
+#+begin_src
+loud -f example.txt -d 3
+#+end_src
+
+#+BEGIN_SRC
+Usage:
+  loud [required&optional-params]
+Options:
+  -h, --help                         print this cligen-erated help
+  --help-syntax                      advanced: prepend,plurals,..
+  -f=, --file=     string  REQUIRED  set file
+  -d=, --depth=    int     REQUIRED  set depth
+  -v, --verbose    bool    true      set verbose
+  -m=, --mode=     string  "http"    set mode
+  --delay=         int     5         set delay
+  -t=, --timeout=  int     10        set timeout
+  -n, --no-random  bool    false     set no_random #turns off delay
+#+END_SRC
