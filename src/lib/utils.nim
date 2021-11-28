@@ -6,8 +6,9 @@ proc jitter*(time: int,  exp: float): float =
   randomize()
   let z = sqrt(float(time) * float(rand(0.5..exp)) * float(rand(0.1..1.0)))
   var jitter = sqrt(rand(0.1..z) * rand(0.01..exp))
-  return jitter
+  return jitter + float(time)
+
 if isMainModule:
   for x in 1..50:
-    var y = jitter(5, float(x))
+    var y = jitter(5 + x, float(x))
     echo(y)
